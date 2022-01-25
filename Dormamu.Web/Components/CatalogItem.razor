@@ -1,0 +1,23 @@
+﻿@using Dormamu.Web.Models
+@using System.Globalization
+
+<div class="col">
+    <div class="card shadow-sm">
+        <img class="bd-placeholder-img card-img-top" height="225" src="/img/teclado.jpg" />
+        <div class="card-body">
+            <p class="card-text">@Produto.Nome</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                    <a href="../Produto/DetalhesProduto/@Produto.ID" class="btn btn-sm btn-outline-secondary">Visualizar</a>
+                    <a href="../Carrinho/AdicionarItemCarrinho?produtoID=@Produto.ID" class="btn btn-sm btn-outline-secondary">Comprar</a>
+                </div>
+                <small class="product-price">@Produto.Valor.ToString("C2", CultureInfo.CurrentCulture)</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public Produto Produto { get; set; }
+}

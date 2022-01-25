@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Dormamu.Web.Models.Produto>
+
+@{
+    ViewData["Title"] = "Produtos";
+}
+
+<div class="container content-container">
+    <h1>Produtos</h1>
+    <hr />
+
+    <div class="d-md-flex justify-content-md-end">
+        <a class="btn btn-outline-primary" asp-action="CadastrarProduto">Novo</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nome)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estoque)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Valor)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.Estoque)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Valor)
+                    </td>
+                    <td>
+                        <a class="btn btn-outline-primary" asp-action="AlterarProduto" asp-route-id="@item.ID">Alterar</a>
+                        <a class="btn btn-outline-danger" asp-action="ExcluirProduto" asp-route-id="@item.ID">Excluir</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

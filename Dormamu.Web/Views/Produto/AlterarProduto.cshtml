@@ -1,0 +1,55 @@
+﻿@model Dormamu.Web.Models.Produto
+
+@{
+    ViewData["Title"] = "Alterar produto";
+}
+
+<div class="container content-container">
+    <h1>Alterar produto</h1>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="AlterarProduto">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ID" />
+                <div class="mb-3">
+                    <label asp-for="Nome" class="control-label"></label>
+                    <input asp-for="Nome" class="form-control" />
+                    <span asp-validation-for="Nome" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DescricaoBreve" class="control-label"></label>
+                    <textarea asp-for="DescricaoBreve" class="form-control"></textarea>
+                    <span asp-validation-for="DescricaoBreve" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="DescricaoCompleta" class="control-label"></label>
+                    <textarea asp-for="DescricaoCompleta" class="form-control"></textarea>
+                    <span asp-validation-for="DescricaoCompleta" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Estoque" class="control-label"></label>
+                    <input asp-for="Estoque" class="form-control" />
+                    <span asp-validation-for="Estoque" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Valor" class="control-label"></label>
+                    <input asp-for="Valor" class="form-control" />
+                    <span asp-validation-for="Valor" class="text-danger"></span>
+                </div>
+                <div class="d-md-flex justify-content-md-end">
+                    <button type="submit" class="btn btn-outline-primary">Alterar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Voltar</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

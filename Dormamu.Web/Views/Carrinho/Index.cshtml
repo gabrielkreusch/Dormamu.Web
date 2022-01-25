@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Dormamu.Web.Models.ItemCarrinho>
+@using Dormamu.Web.Utils;
+@{
+    ViewData["Title"] = "Carrinho";
+}
+
+<div class="container content-container">
+    @if (Model != null)
+    {
+        <h1>Carrinho</h1>
+        <hr />
+        <br />
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <span>Item</span>
+                    </th>
+                    <th>
+                        <span>Valor unitário</span>
+                    </th>
+                    <th>
+                        <span>Quantidade</span>
+                    </th>
+                    <th>
+                        <span>Valor</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Produto.Nome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Produto.Valor)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantidade)
+                        </td>
+                        <td>
+                            @(item.Produto.Valor * item.Quantidade)
+                        </td>
+                        <td>
+                            <a href="../Produto/DetalhesProduto/@item.ProdutoID" class="btn btn-outline-primary">Visualizar</a>
+                            <a href="../ItemCarrinho/ExcluirItemCarrinho/@item.ID" class="btn btn-outline-danger">Remover</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td></td>
+                    <td><b>Total:</b></td>
+                    <td>@Model.Sum(item => item.Quantidade)</td>
+                    <td>@Model.Sum(item => item.Produto.Valor * item.Quantidade)</td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+    else if (!Context.User.Identity.IsAuthenticated)
+    {
+        <h1>Carrinho</h1>
+        <hr />
+
+        <p>
+            É necessário estar logado para acessar o carrinho.
+        </p>
+        <a href="javascript:window.history.back()">Voltar</a>
+    }
+    else
+    {
+        <h1>Carrinho</h1>
+        <hr />
+
+        <p>
+            Você ainda não adicionou nenhum item ao seu carrinho.
+
+            Acesse nosso catalogo abaixo, e boas compras!
+        </p>
+        <a asp-controller="Produto" asp-action="CatalogoProdutos">Catálogo</a>
+    }
+</div>

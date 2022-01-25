@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Dormamu.Web.Models.Produto>
+
+@{
+    ViewData["Title"] = "Catálogo de produtos";
+}
+
+<div class="container content-container">
+    <h1>Catálogo de produtos</h1>
+    <hr />
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        @foreach (var item in Model)
+        {
+            <component type="typeof(CatalogItem)" render-mode="ServerPrerendered" param-Produto="item" />
+        }
+    </div>
+    <hr />
+</div>
