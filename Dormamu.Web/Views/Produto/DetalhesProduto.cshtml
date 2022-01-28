@@ -6,43 +6,52 @@
 }
 
 <div class='container content-container'>
-    <h1>@Model.Nome</h1>
-    <hr />
 
-    <div class="row">
-        <div class="col-8 margin-0 ">
-            <img class="bd-placeholder-img card-img-top" height="600" src="/img/teclado.jpg" />
-        </div>
-        <div class="col">
-            <div class="card shadow-sm padding-16 height-100">
-                <div class="card-header">
-                    <h2>@Model.Nome</h2>
-                    <br />
-                </div>
-                <div class="card-body">
-                    <p>@Model.DescricaoBreve</p>
-                    <br />
-                </div>
-                <div class="card-footer">
-                    <div class="d-md-flex justify-content-md-end">
-                        <span class="product-price">@Model.Valor.ToString("C2", CultureInfo.CurrentCulture)</span>
+    <div class="container my-5">
+        <div class="row p-4 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+            <h1 class="text-center ">@Model.Nome</h1>
+            <hr />
+
+            <div class="px-5 pt-2 my-5">
+                <div class="row">
+                    <div class="col-8 margin-0 ">
+                        <img class="bd-placeholder-img card-img-top" height="600" src="/img/teclado.jpg" />
                     </div>
-                    <hr />
-                    <form asp-controller="Carrinho" asp-action="AdicionarItemCarrinho" >
-                        <div class="gap-2 d-md-flex justify-content-md-end">
-                            <input type="hidden" name="produtoID" value="@Model.ID" />
-                            <input type="number" name="quantidade" min="1" max="@Model.Estoque" value="1" class="form-control quantity px-2" />
-                            <button class="btn btn-outline-success px-2" type="submit">Comprar</button>
+                    <div class="col">
+                        <div class="card shadow-sm padding-16 height-100">
+                            <div class="card-header">
+                                <h2>@Model.Nome</h2>
+                                <br />
+                            </div>
+                            <div class="card-body">
+                                <p>@Model.DescricaoBreve</p>
+                                <br />
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-md-flex justify-content-md-end">
+                                    <span class="product-price">@Model.Valor.ToString("C2", CultureInfo.CurrentCulture)</span>
+                                </div>
+                                <hr />
+                                <form asp-controller="Carrinho" asp-action="AdicionarItemCarrinho">
+                                    <div class="gap-2 d-md-flex justify-content-md-end">
+                                        <input type="hidden" name="produtoID" value="@Model.ID" />
+                                        <input type="number" name="quantidade" min="1" max="@Model.Estoque" value="1" class="form-control quantity px-2" />
+                                        <button class="btn btn-outline-success px-2" type="submit">Comprar</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col">
-            <div class="margin-top-16 card shadow-sm padding-16">
-                <p>@Model.DescricaoCompleta</p>
+    <div class="container my-5">
+        <div class="row p-4 pt-lg-5 align-items-center rounded-3 border shadow-lg colapsible">
+            <div class="col">
+                <div class="padding-16">
+                    <p>@Model.DescricaoCompleta</p>
+                </div>
             </div>
         </div>
     </div>

@@ -5,3 +5,7 @@
         icon: data.type
     });
 }
+
+function Navigate(data) {
+    window.location.href = data.path;
+}

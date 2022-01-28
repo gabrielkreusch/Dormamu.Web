@@ -74,7 +74,10 @@ namespace Dormamu.Web.Controllers
                         ExpiresUtc = DateTime.Now.AddHours(1)
                     });
 
-                return RedirectToAction("Index", "Home");
+                return new JsonResult(new NavigationObject()
+                {
+                    Path = "../"
+                });
             }
             return new JsonResult(new NotificationObject()
             {

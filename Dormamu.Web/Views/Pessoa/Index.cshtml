@@ -5,52 +5,58 @@
 }
 
 <div class="container content-container">
-    <h1>Pessoas</h1>
-    <hr />
 
-    <div class="d-md-flex justify-content-md-end">
-        <a class="btn btn-outline-primary" asp-action="CadastrarPessoa">Novo</a>
+    <div class="container my-5">
+        <div class="row p-4 pt-lg-5 align-items-center text-center rounded-3 border shadow-lg">
+            <h1>Pessoas</h1>
+            <hr />
+            <div class="px-5 pt-2 my-5 text-center border-bottom">
+                <div class="d-md-flex justify-content-md-end">
+                    <a class="btn btn-outline-primary" asp-action="CadastrarPessoa">Novo</a>
+                </div>
+                <table class="table mb-5 pb-5">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Nome)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CPFCNPJ)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefone)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CPFCNPJ)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefone)
+                                </td>
+                                <td>
+                                    <a class="btn btn-outline-primary" asp-action="AlterarPessoa" asp-route-id="@item.ID">Alterar</a>
+                                    <a class="btn btn-outline-danger" asp-action="ExcluirPessoa" asp-route-id="@item.ID">Excluir</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CPFCNPJ)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Email)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Telefone)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Nome)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CPFCNPJ)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Email)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Telefone)
-                    </td>
-                    <td>
-                        <a class="btn btn-outline-primary" asp-action="AlterarPessoa" asp-route-id="@item.ID">Alterar</a>
-                        <a class="btn btn-outline-danger" asp-action="ExcluirPessoa" asp-route-id="@item.ID">Excluir</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
 </div>

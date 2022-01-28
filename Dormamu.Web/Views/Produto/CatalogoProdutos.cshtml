@@ -5,14 +5,20 @@
 }
 
 <div class="container content-container">
-    <h1>Catálogo de produtos</h1>
-    <hr />
 
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        @foreach (var item in Model)
-        {
-            <component type="typeof(CatalogItem)" render-mode="ServerPrerendered" param-Produto="item" />
-        }
+    <div class="container my-5">
+        <div class="row p-4 pt-lg-5 align-items-center text-center rounded-3 border shadow-lg">
+            <h1>Catálogo de Produtos</h1>
+            <hr />
+            <div class="px-5 pt-2 my-5 text-center border-bottom">
+
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    @foreach (var item in Model)
+                    {
+                        <component type="typeof(CatalogItem)" render-mode="ServerPrerendered" param-Produto="item" />
+                    }
+                </div>
+            </div>
+        </div>
     </div>
-    <hr />
 </div>

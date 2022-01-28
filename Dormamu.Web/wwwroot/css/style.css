@@ -50,3 +50,8 @@
 .quantity {
     width: 5em !important;
 }
+
+.centered-form-control {
+    margin-right: 12rem !important;
+    margin-left: 12rem !important;
+}
