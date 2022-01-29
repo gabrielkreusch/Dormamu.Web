@@ -32,7 +32,8 @@
                                     <span class="product-price">@Model.Valor.ToString("C2", CultureInfo.CurrentCulture)</span>
                                 </div>
                                 <hr />
-                                <form asp-controller="Carrinho" asp-action="AdicionarItemCarrinho">
+                                <form asp-controller="Carrinho" asp-action="AdicionarItemCarrinho" method="post" 
+                                      data-ajax="true" data-ajax-method="post" data-ajax-success="Notify" data-ajax-failure="Notify">
                                     <div class="gap-2 d-md-flex justify-content-md-end">
                                         <input type="hidden" name="produtoID" value="@Model.ID" />
                                         <input type="number" name="quantidade" min="1" max="@Model.Estoque" value="1" class="form-control quantity px-2" />

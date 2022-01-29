@@ -76,7 +76,7 @@ namespace Dormamu.Web.Controllers
                     }).Wait();
                 }
 
-                if (carrinho.ItensCarrinho.Any(item => item.ProdutoID != produtoID))
+                if (!carrinho.ItensCarrinho.Any(item => item.ProdutoID == produtoID))
                 {
                     Produto produto = _contexto.Produtos.Find(produtoID);
                     CadastrarItemCarrinho(new ItemCarrinho()
@@ -86,15 +86,29 @@ namespace Dormamu.Web.Controllers
                         Carrinho = carrinho
                     }).Wait();
 
-                    return Json("{ mensagem: 'Produto adicionado ao carrinho.'}");
+                    return new JsonResult(new NotificationObject
+                    {
+                        Message = "Produto adicionado ao carrinho",
+                        Title = "Sucesso",
+                        Type = NotificationType.Success
+                    });
                 }
                 else
                 {
-                    return Json("{ mensagem: 'Você já adicionou esse produto ao carrinho.'}");
+                    return new JsonResult(new NotificationObject
+                    {
+                        Message = "Você já adicionou esse produto ao carrinho",
+                        Title = "Oops",
+                        Type = NotificationType.Warning
+                    });
                 }
             }
-
-            return Json("{ mensagem: 'É necessário estar logado para adicionar itens ao carrinho.'}");
+            return new JsonResult(new NotificationObject
+            {
+                Message = "É necessário estar logado para adicionar itens ao carrinho",
+                Title = "Oops",
+                Type = NotificationType.Error
+            });
         }
 
         private async Task CadastrarItemCarrinho(ItemCarrinho item)

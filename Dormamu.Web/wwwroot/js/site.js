@@ -1,7 +1,7 @@
 ﻿function Notify(data) {
     Swal.fire({
         title: data.title,
-        message: data.message,
+        text: data.message,
         icon: data.type
     });
 }
